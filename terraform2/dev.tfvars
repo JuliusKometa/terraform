@@ -1,0 +1,5 @@
+ami_id = "ami-083ac7c7ecf9bb9b0"
+instance_type = "t2.micro"
+instance_name = "Helloworld-dev"
+profile_name ="default"
+region = "us-west-2"

@@ -1,0 +1,21 @@
+terraform init
+
+terraform plan --var-file=variables/dev.tfvars
+
+terraform destroy --var-file=variables/dev.tfvars --auto-approve
+
+
+
+workspace:
+
+usage : terraform workspace
+
+terraform workspace list (it shows the list of workspace)
+
+terraform workspace show (it shows the active workspace)
+
+terraform workspace select (it makes the active workspace)
+
+terraform workspace delete
+
+terraform workspace new
