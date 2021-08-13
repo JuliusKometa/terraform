@@ -1,0 +1,24 @@
+digraph {
+	compound = "true"
+	newrank = "true"
+	subgraph "root" {
+		"[root] aws_instance.web (expand)" [label = "aws_instance.web", shape = "box"]
+		"[root] aws_instance.web2 (expand)" [label = "aws_instance.web2", shape = "box"]
+		"[root] output.PrivateIP" [label = "output.PrivateIP", shape = "note"]
+		"[root] output.PublicIP" [label = "output.PublicIP", shape = "note"]
+		"[root] output.public_ip (destroy)" [label = "output.public_ip (destroy)", shape = "note"]
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"]" [label = "provider[\"registry.terraform.io/hashicorp/aws\"]", shape = "diamond"]
+		"[root] aws_instance.web (expand)" -> "[root] provider[\"registry.terraform.io/hashicorp/aws\"]"
+		"[root] aws_instance.web2 (expand)" -> "[root] provider[\"registry.terraform.io/hashicorp/aws\"]"
+		"[root] meta.count-boundary (EachMode fixup)" -> "[root] output.PrivateIP"
+		"[root] meta.count-boundary (EachMode fixup)" -> "[root] output.PublicIP"
+		"[root] meta.count-boundary (EachMode fixup)" -> "[root] output.public_ip (destroy)"
+		"[root] output.PrivateIP" -> "[root] aws_instance.web2 (expand)"
+		"[root] output.PublicIP" -> "[root] aws_instance.web (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] aws_instance.web (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] aws_instance.web2 (expand)"
+		"[root] root" -> "[root] meta.count-boundary (EachMode fixup)"
+		"[root] root" -> "[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)"
+	}
+}
+
